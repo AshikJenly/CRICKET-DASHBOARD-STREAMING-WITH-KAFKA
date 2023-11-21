@@ -1,4 +1,4 @@
-CREATE TABLE cricket_match_data (
+CREATE TABLE cricket_match_data_live (
     unique_id INT PRIMARY KEY AUTO_INCREMENT,
     match_id INT,
     inning INT,
