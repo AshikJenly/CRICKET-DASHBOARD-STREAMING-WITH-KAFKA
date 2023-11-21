@@ -1,4 +1,5 @@
 CREATE TABLE cricket_match_data (
+    unique_id INT PRIMARY KEY AUTO_INCREMENT,
     match_id INT,
     inning INT,
     batting_team VARCHAR(255),
