@@ -4,7 +4,7 @@ CREATE TABLE cricket_match_data_live (
     inning INT,
     batting_team VARCHAR(255),
     bowling_team VARCHAR(255),
-    over INT,
+    `over` INT,
     ball INT,
     batsman VARCHAR(255),
     non_striker VARCHAR(255),
