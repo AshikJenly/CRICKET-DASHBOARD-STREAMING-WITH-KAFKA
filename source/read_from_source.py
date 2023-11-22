@@ -12,7 +12,7 @@ conf = {
 }
 
 consumer = Consumer(conf)
-consumer.subscribe(['mysql.cricket_match_data_live'])
+consumer.subscribe(['mysql_live_cricket_match_data_live'])
 
 
 shared_data = []
@@ -21,7 +21,7 @@ def get_data(shared_data):
     try:
         print("Started consuming")
         while True:
-            msg = consumer.poll(0.8)
+            msg = consumer.poll(1)
             if msg is None:
                 print("waiting")
                 continue
