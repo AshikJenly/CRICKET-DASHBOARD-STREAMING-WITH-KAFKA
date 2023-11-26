@@ -12,7 +12,7 @@ conf = {
 }
 
 consumer = Consumer(conf)
-consumer.subscribe(['mysql_live_cricket_match_data_live'])
+consumer.subscribe(['mysql_live_cricket_match_data_live_1'])
 
 
 shared_data = []
