@@ -10,9 +10,27 @@ import time
 team_details = get_team_details()
 title = st.empty()
 team = st.empty()
+
+col1, col2 = st.columns(2)
+with col1:
+    c1_h = st.empty()
+    c1_h.header("Column 1")
+    st.text("Content for column 1")
+
+# Add content to the second column
+with col2:
+    c2_h = st.empty()
+    c2_h.header("Column 2")
+    st.text("Content for column 2")
+
 Team_A_run = st.empty()
 Team_B_run = st.empty()
 line_chart = st.empty()
+
+# batsman
+# Create a 2-column layout
+
+# Add content to the first column
 
 
 try:
@@ -39,7 +57,8 @@ try:
             runs_padded = list(x_padded)
             runs_2_padded = list(y_padded)
             
-            
+            c1_h.header(Team_A)
+            c2_h.header(Team_B)
             Team_A_run.write(
                 f"{Team_A} : {runs[-1]}/{len(a_wickets)}\t({len(runs)})")
             if len(runs_2)!=0:
