@@ -98,5 +98,7 @@ try:
             
         else:
             title.title("Loading Please Wait")
+            title.markdown("<style>h1 {text-align: center;}</style>", unsafe_allow_html=True)
+
 except TypeError:
     pass
