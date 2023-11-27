@@ -44,6 +44,8 @@ line_chart = st.empty()
 
 # ----------------- HISTORY -------------------
 st.title("History")
+st.markdown("<hr style='border:1px solid white'>", unsafe_allow_html=True)
+
 batting_history_1,bowling_history_1 = st.columns(2)
 batting_history_2,bowling_history_2 = st.columns(2)
 
@@ -72,10 +74,10 @@ try:
                 
                 Team_A = team_details[1][0]
                 Team_B = team_details[1][1]
-                bat_table_1_h.markdown("<h4>"+Team_A+"Batting Score"+"</h4>",unsafe_allow_html=True)
-                bat_table_2_h.markdown("<h4>"+Team_B+"</h4>",unsafe_allow_html=True)
-                bow_history_1_h.markdown("<h4>"+Team_B+"</h4>",unsafe_allow_html=True)
-                bow_history_2_h.markdown("<h4>"+Team_A+"</h4>",unsafe_allow_html=True)
+                bat_table_1_h.markdown("<h4>"+Team_A+" (Batting)"+"</h4>",unsafe_allow_html=True)
+                bat_table_2_h.markdown("<h4>"+Team_B+" (Batting)"+"</h4>",unsafe_allow_html=True)
+                bow_history_1_h.markdown("<h4>"+Team_B+" (Bowling)"+"</h4>",unsafe_allow_html=True)
+                bow_history_2_h.markdown("<h4>"+Team_A+" (Bowling)"+"</h4>",unsafe_allow_html=True)
             team.markdown(f"<h1 style='text-align:center'>{Team_A}  vs {Team_B}</h1>",unsafe_allow_html=True)
 
             # batting.write(f"Batting Score of {Team_A}")
@@ -94,7 +96,7 @@ try:
             # Batting Details
             # try:
             batting_team.markdown(
-                f"<span style='font-size: 30px;'>🏏 {get_batting_team()} : {team_a_runs[-1]}/{len(a_wickets)}\t({len(team_a_runs)})</span>",
+                f"<span style='font-size: 24px;'>🏏 {get_batting_team()} : {team_a_runs[-1]}/{len(a_wickets)}\t({len(team_a_runs)})</span>",
                 unsafe_allow_html=True
                 )
 
@@ -119,7 +121,7 @@ try:
             if len(team_b_runs) != 0:
                 Team_B_run.write(f"{Team_B} :{team_b_runs[-1]}/{len(b_wickets)}\t({len(team_b_runs)})")
                 bowling_team.markdown(
-                f"<span style='font-size: 30px;'>⚾ {get_bowling_team()} : {team_b_runs[-1]}/{len(b_wickets)}\t({len(team_b_runs)})</span>",
+                f"<span style='font-size: 24px;'>⚾ {get_bowling_team()} : {team_b_runs[-1]}/{len(b_wickets)}\t({len(team_b_runs)})</span>",
                 unsafe_allow_html=True
                 )
             else:

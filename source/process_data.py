@@ -80,22 +80,26 @@ def get_isOut(player_name):
         if data["player_dismissed"] == player_name:
             details = data
     if details is not None:
-        return (True,details["bowler"],details["dismissal_kind"],details["fielder"])
+        return (True,details["dismissal_kind"],details["bowler"],details["fielder"])
     else:
         return (False,1)
 def get_batsman_history(team_name):
     batsmans = set([data["batsman"] for data in shared_data if data["batting_team"]==team_name])
     
-    data = {"BatsMan":[],"Runs":[],"Status":[]}
+    data = {"BatsMan":[],"Runs":[],"Status":[],"Bowled":[],"Caught":[]}
     for batsman in batsmans:
         # print(batsman)
         data["BatsMan"].append(batsman)
         data["Runs"].append(sum(get_batsmans_run(team_name)[batsman]))
         is_out = get_isOut(player_name=batsman)
         if is_out[0]:
-            data["Status"].append(is_out[2] + " b->"+is_out[1] + is_out[-1] if len(is_out)!=0 else "")
+            data["Status"].append(is_out[1])
+            data["Bowled"].append(is_out[2])
+            data["Caught"].append(is_out[-1] if len(is_out)!=0 else "-")
         else:
             data["Status"].append("Not Out")
+            data["Bowled"].append("-")
+            data["Caught"].append("-")
     # print("data = "+data)
     return data
 
