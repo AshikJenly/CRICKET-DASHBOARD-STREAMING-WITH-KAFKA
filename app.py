@@ -13,7 +13,7 @@ from source.process_data import (
     get_balls_faced,
     get_bowling_team,
     get_wickets,
-    get_batsmans_run,
+    get_bowling_history,
     get_batsman_history
     )
 from itertools import zip_longest
@@ -58,19 +58,6 @@ with bowling_history_2:
       
 Team_A_run = st.empty()
 Team_B_run = st.empty()
-data = {'Name': ['John', 'Alice', 'Bob'],
-        'Age': [25, 30, 22],
-        'City': ['New York', 'San Francisco', 'Seattle']}
-
-# Create a DataFrame
-df = pd.DataFrame(data)
-bat_table_1.table(df)
-bat_table_2.table(df)
-bow_history_1.table(df)
-# batsman
-# Create a 2-column layout
-
-# Add content to the first column
 
 try:
     while True:
@@ -90,8 +77,8 @@ try:
 
             # Pad the shorter list with np.nan
             # if team_b_runs is not None:
-            padded_data = list(zip_longest(team_a_runs, team_b_runs, fillvalue=None))
-            x_padded, y_padded = zip(*padded_data)
+            padded_data = list(zip_longest(team_a_runs, team_b_runs,[None for i in range(0,21 )], fillvalue=None))
+            x_padded, y_padded ,_= zip(*padded_data)
             team_a_runs_padded = list(x_padded)
             team_b_runs_padded = list(y_padded)
 
@@ -102,20 +89,21 @@ try:
                 unsafe_allow_html=True
                 )
 
-            print(get_batsman_history(Team_A))
 
         
             striker, non_striker = get_striker_and_n_s(get_batting_team())
             ba1.write(f"{striker[0]} - {sum(striker[1])} ({get_balls_faced(striker[0])} balls) *")
             ba2.write(f"{non_striker[0]} - {sum(non_striker[1])} ({get_balls_faced(non_striker[0])} balls)")
             bowler.write(f"{get_bowler()} - {get_wickets(get_bowler())}/{get_balls_faced(get_bowler(),batsman=False)}")
-            # except:
-            #     print("Error" )
-            #     # pass
+           
 
 
             # ---------- HISTORY --------------------
-            
+            bat_table_1.table(pd.DataFrame(get_batsman_history(Team_A)))
+            bat_table_2.table(pd.DataFrame(get_batsman_history(Team_B)))
+            bow_history_1.table(pd.DataFrame(get_bowling_history(Team_B)))
+            bow_history_2.table(pd.DataFrame(get_bowling_history(Team_A)))
+                        
             #----------------------------------------
             Team_A_run.write(
                 f"{Team_A} : {team_a_runs[-1]}/{len(a_wickets)}\t({len(team_a_runs)})")

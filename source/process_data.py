@@ -83,3 +83,15 @@ def get_batsman_history(team_name):
         data["BatsMan"].append(batsman)
         data["Runs"].append(sum(get_batsmans_run(team_name)[batsman]))
     return data
+
+
+def get_bowling_history(team_name):
+    bowlers = set([data["bowler"] for data in shared_data if data["bowling_team"]==team_name])
+    
+    data = {"Bowlers":[],"Wickets":[]}
+    for bowler in bowlers:
+        data["Bowlers"].append(bowler)
+        wickets = sum(1 for data in shared_data if len(data["player_dismissed"]) !=0 and data["bowler"] == bowler and data["bowling_team"]==team_name )
+         
+        data["Wickets"].append(wickets)
+    return data

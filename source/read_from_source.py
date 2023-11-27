@@ -23,7 +23,6 @@ def get_data(shared_data):
         while True:
             msg = consumer.poll(1)
             if msg is None:
-                print("waiting")
                 continue
             elif msg.error():
                 if msg.error().code() == KafkaError._PARTITION_EOF:
