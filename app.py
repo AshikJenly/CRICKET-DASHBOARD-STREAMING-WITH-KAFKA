@@ -96,26 +96,25 @@ try:
             team_b_runs_padded = list(y_padded)
 
             # Batting Details
-            try:
-                batting_team.markdown(
-                    f"<span style='font-size: 30px;'>🏏 {get_batting_team()} : {team_a_runs[-1]}/{len(a_wickets)}\t({len(team_a_runs)})</span>",
-                    unsafe_allow_html=True
-                    )
+            # try:
+            batting_team.markdown(
+                f"<span style='font-size: 30px;'>🏏 {get_batting_team()} : {team_a_runs[-1]}/{len(a_wickets)}\t({len(team_a_runs)})</span>",
+                unsafe_allow_html=True
+                )
 
-            
+            print(get_batsman_history(Team_A))
 
-            
-                striker, non_striker = get_striker_and_n_s(get_batting_team())
-                ba1.write(f"{striker[0]} - {sum(striker[1])} ({get_balls_faced(striker[0])} balls) *")
-                ba2.write(f"{non_striker[0]} - {sum(non_striker[1])} ({get_balls_faced(non_striker[0])} balls)")
-                bowler.write(f"{get_bowler()} - {get_wickets(get_bowler())}/{get_balls_faced(get_bowler(),batsman=False)}")
-            except:
-                print("Error" )
-                # pass
+        
+            striker, non_striker = get_striker_and_n_s(get_batting_team())
+            ba1.write(f"{striker[0]} - {sum(striker[1])} ({get_balls_faced(striker[0])} balls) *")
+            ba2.write(f"{non_striker[0]} - {sum(non_striker[1])} ({get_balls_faced(non_striker[0])} balls)")
+            bowler.write(f"{get_bowler()} - {get_wickets(get_bowler())}/{get_balls_faced(get_bowler(),batsman=False)}")
+            # except:
+            #     print("Error" )
+            #     # pass
 
 
             # ---------- HISTORY --------------------
-            # print(get_batsman_history(Team_A))
             
             #----------------------------------------
             Team_A_run.write(

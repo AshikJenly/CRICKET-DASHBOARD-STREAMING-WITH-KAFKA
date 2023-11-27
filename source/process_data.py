@@ -75,9 +75,11 @@ def get_bowler():
     return shared_data[-1]["bowler"]
 
 def get_batsman_history(team_name):
-    batsmans = set([data["batsman"] for data in shared_data if shared_data["batting_team"] == team_name])
+    batsmans = set([data["batsman"] for data in shared_data if data["batting_team"]==team_name])
+    
     data = {"BatsMan":[],"Runs":[]}
     for batsman in batsmans:
+        # print(batsman)
         data["BatsMan"].append(batsman)
         data["Runs"].append(sum(get_batsmans_run(team_name)[batsman]))
     return data
