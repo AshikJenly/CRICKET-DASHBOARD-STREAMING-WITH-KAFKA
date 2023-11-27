@@ -58,8 +58,15 @@ def get_striker_and_n_s(team_name):
         return (striker,batsman_runs[striker]),(non_striker,batsman_runs[non_striker])
     except KeyError:
         return None
-def get_balls_faced(player_name):
-    balls = sum(1 for data in shared_data if data["batsman"] == player_name)
-    return balls
+def get_balls_faced(player_name,batsman=True):
+    if batsman:
+        balls = sum(1 for data in shared_data if data["batsman"] == player_name)
+        return balls
+    else:
+        balls = sum(1 for data in shared_data if data["bowler"] == player_name)
+        return balls
+def get_wickets(player_name):
+    wickets = sum(1 for data in shared_data if data["bowler"] == player_name and len(data["player_dismissed"]) !=0 )
+    return wickets
 def get_bowler():
     return shared_data[-1]["bowler"]
