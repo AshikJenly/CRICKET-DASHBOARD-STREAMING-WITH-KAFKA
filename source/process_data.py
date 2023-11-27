@@ -1,5 +1,4 @@
 from .read_from_source import shared_data
-
 match_id = -1
 
     
@@ -74,16 +73,31 @@ def get_wickets(player_name):
 def get_bowler():
     return shared_data[-1]["bowler"]
 
+def get_isOut(player_name):
+    details = None
+    
+    for data in shared_data:
+        if data["player_dismissed"] == player_name:
+            details = data
+    if details is not None:
+        return (True,details["bowler"],details["dismissal_kind"],details["fielder"])
+    else:
+        return (False,1)
 def get_batsman_history(team_name):
     batsmans = set([data["batsman"] for data in shared_data if data["batting_team"]==team_name])
     
-    data = {"BatsMan":[],"Runs":[]}
+    data = {"BatsMan":[],"Runs":[],"Status":[]}
     for batsman in batsmans:
         # print(batsman)
         data["BatsMan"].append(batsman)
         data["Runs"].append(sum(get_batsmans_run(team_name)[batsman]))
+        is_out = get_isOut(player_name=batsman)
+        if is_out[0]:
+            data["Status"].append(is_out[2] + " b->"+is_out[1] + is_out[-1] if len(is_out)!=0 else "")
+        else:
+            data["Status"].append("Not Out")
+    # print("data = "+data)
     return data
-
 
 def get_bowling_history(team_name):
     bowlers = set([data["bowler"] for data in shared_data if data["bowling_team"]==team_name])
@@ -95,3 +109,6 @@ def get_bowling_history(team_name):
          
         data["Wickets"].append(wickets)
     return data
+
+
+    

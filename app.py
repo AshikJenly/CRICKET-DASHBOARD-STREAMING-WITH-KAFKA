@@ -48,12 +48,16 @@ batting_history_1,bowling_history_1 = st.columns(2)
 batting_history_2,bowling_history_2 = st.columns(2)
 
 with batting_history_1:
+    bat_table_1_h = st.empty()
     bat_table_1 = st.empty()
 with batting_history_2:
+    bat_table_2_h = st.empty()
     bat_table_2 = st.empty()
 with bowling_history_1:
+    bow_history_1_h = st.empty()
     bow_history_1 = st.empty()
 with bowling_history_2:
+    bow_history_2_h = st.empty()
     bow_history_2 = st.empty()
       
 Team_A_run = st.empty()
@@ -65,8 +69,13 @@ try:
 
         if team_details is not None:
             if Team_A is None:
+                
                 Team_A = team_details[1][0]
                 Team_B = team_details[1][1]
+                bat_table_1_h.markdown("<h4>"+Team_A+"Batting Score"+"</h4>",unsafe_allow_html=True)
+                bat_table_2_h.markdown("<h4>"+Team_B+"</h4>",unsafe_allow_html=True)
+                bow_history_1_h.markdown("<h4>"+Team_B+"</h4>",unsafe_allow_html=True)
+                bow_history_2_h.markdown("<h4>"+Team_A+"</h4>",unsafe_allow_html=True)
             team.markdown(f"<h1 style='text-align:center'>{Team_A}  vs {Team_B}</h1>",unsafe_allow_html=True)
 
             # batting.write(f"Batting Score of {Team_A}")
