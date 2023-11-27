@@ -39,13 +39,15 @@ def get_batting_team():
 
 def get_bowling_team():
     return shared_data[-1]["bowling_team"]
-def get_batsmans_run(team_name):
+def get_batsmans_run(team_name,for_df = False):
     batsmans = [data["batsman"] for data in shared_data if data["batting_team"]==team_name]
     batsman_runs = {}
     
     for batsman in batsmans:
         runs = [data["batsman_runs"] for data in shared_data if data["batsman"]==batsman]
         batsman_runs[batsman] =runs
+            
+        
     return batsman_runs
 
 def get_striker_and_n_s(team_name):
@@ -58,6 +60,7 @@ def get_striker_and_n_s(team_name):
         return (striker,batsman_runs[striker]),(non_striker,batsman_runs[non_striker])
     except KeyError:
         return None
+
 def get_balls_faced(player_name,batsman=True):
     if batsman:
         balls = sum(1 for data in shared_data if data["batsman"] == player_name)
@@ -70,3 +73,11 @@ def get_wickets(player_name):
     return wickets
 def get_bowler():
     return shared_data[-1]["bowler"]
+
+def get_batsman_history(team_name):
+    batsmans = set([data["batsman"] for data in shared_data if shared_data["batting_team"] == team_name])
+    data = {"BatsMan":[],"Runs":[]}
+    for batsman in batsmans:
+        data["BatsMan"].append(batsman)
+        data["Runs"].append(sum(get_batsmans_run(team_name)[batsman]))
+    return data

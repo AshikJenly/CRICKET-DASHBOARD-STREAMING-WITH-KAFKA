@@ -11,7 +11,10 @@ from source.process_data import (
     get_batting_team,
     get_bowler,
     get_balls_faced,
-    get_bowling_team
+    get_bowling_team,
+    get_wickets,
+    get_batsmans_run,
+    get_batsman_history
     )
 from itertools import zip_longest
 
@@ -19,10 +22,12 @@ st.set_page_config(layout="wide")
 
 team_details = get_team_details()
 title = st.empty()
+Team_A,Team_B = None,None
 team = st.empty()
 st.markdown("<hr style='border:2px solid white'>", unsafe_allow_html=True)
 
 batting, bowling = st.columns(2)
+
 with batting:
     batting_team = st.empty()
     ba1 = st.empty()
@@ -36,9 +41,32 @@ st.markdown("<hr style='border:2px solid white'>", unsafe_allow_html=True)
 
 st.markdown("<h3 style='text-align:center'>Score Graph 📈</h3>", unsafe_allow_html=True)
 line_chart = st.empty()
+
+# ----------------- HISTORY -------------------
+st.title("History")
+batting_history_1,bowling_history_1 = st.columns(2)
+batting_history_2,bowling_history_2 = st.columns(2)
+
+with batting_history_1:
+    bat_table_1 = st.empty()
+with batting_history_2:
+    bat_table_2 = st.empty()
+with bowling_history_1:
+    bow_history_1 = st.empty()
+with bowling_history_2:
+    bow_history_2 = st.empty()
+      
 Team_A_run = st.empty()
 Team_B_run = st.empty()
+data = {'Name': ['John', 'Alice', 'Bob'],
+        'Age': [25, 30, 22],
+        'City': ['New York', 'San Francisco', 'Seattle']}
 
+# Create a DataFrame
+df = pd.DataFrame(data)
+bat_table_1.table(df)
+bat_table_2.table(df)
+bow_history_1.table(df)
 # batsman
 # Create a 2-column layout
 
@@ -49,8 +77,9 @@ try:
         team_details = get_team_details()
 
         if team_details is not None:
-            Team_A = team_details[1][0]
-            Team_B = team_details[1][1]
+            if Team_A is None:
+                Team_A = team_details[1][0]
+                Team_B = team_details[1][1]
             team.markdown(f"<h1 style='text-align:center'>{Team_A}  vs {Team_B}</h1>",unsafe_allow_html=True)
 
             # batting.write(f"Batting Score of {Team_A}")
@@ -73,23 +102,30 @@ try:
                     unsafe_allow_html=True
                     )
 
-                bowling_team.markdown(
-                    f"<span style='font-size: 30px;'>⚾ {get_bowling_team()}</span>",
-                    unsafe_allow_html=True
-                    )
+            
 
-                
+            
                 striker, non_striker = get_striker_and_n_s(get_batting_team())
                 ba1.write(f"{striker[0]} - {sum(striker[1])} ({get_balls_faced(striker[0])} balls) *")
                 ba2.write(f"{non_striker[0]} - {sum(non_striker[1])} ({get_balls_faced(non_striker[0])} balls)")
-                bowler.write(get_bowler())
+                bowler.write(f"{get_bowler()} - {get_wickets(get_bowler())}/{get_balls_faced(get_bowler(),batsman=False)}")
             except:
-                pass
+                print("Error" )
+                # pass
 
+
+            # ---------- HISTORY --------------------
+            # print(get_batsman_history(Team_A))
+            
+            #----------------------------------------
             Team_A_run.write(
                 f"{Team_A} : {team_a_runs[-1]}/{len(a_wickets)}\t({len(team_a_runs)})")
             if len(team_b_runs) != 0:
                 Team_B_run.write(f"{Team_B} :{team_b_runs[-1]}/{len(b_wickets)}\t({len(team_b_runs)})")
+                bowling_team.markdown(
+                f"<span style='font-size: 30px;'>⚾ {get_bowling_team()} : {team_b_runs[-1]}/{len(b_wickets)}\t({len(team_b_runs)})</span>",
+                unsafe_allow_html=True
+                )
             else:
                 Team_B_run.write(f"{Team_B} : Not Yet Batted")
             df = pd.DataFrame({
