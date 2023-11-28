@@ -101,5 +101,4 @@
 
 ![Sample Output 1](<Screenshot from 2023-11-27 22-31-30.png>)
 ![Sample Output 2](<Screenshot from 2023-11-27 22-32-28.png>)
-![Sample Output 3](<Screenshot from 2023-11-27 22-45-01.png>)
 ![Sample Output 4](<Screenshot from 2023-11-27 22-45-21.png>)
