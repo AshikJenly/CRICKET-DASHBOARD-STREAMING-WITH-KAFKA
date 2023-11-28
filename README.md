@@ -18,7 +18,7 @@
   - StreamLit
 
 ## Project Architecture
-[docs.odg](https://github.com/AshikJenly/CRICKET-DASHBOARD-STREAMING-WITH-KAFKA/files/13490269/docs.odg)
+![Screenshot from 2023-11-28 21-24-51](https://github.com/AshikJenly/CRICKET-DASHBOARD-STREAMING-WITH-KAFKA/assets/116492348/23e70c7f-f37b-4f17-b3b3-e25f58fe1079)
 
 
 ## How to Execute the Project
