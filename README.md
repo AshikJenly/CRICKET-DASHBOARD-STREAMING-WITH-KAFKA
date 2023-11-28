@@ -10,4 +10,23 @@
     │   └── read_from_source.cpython-311.pyc
     └── read_from_source.py
 
-3 directories, 7 files
+# Heading
+
+## Tools Used
+
+Operating System 
+    * Ubuntu
+
+Programming Languages
+    * Python
+
+Big Data Tools
+    * Kafka
+
+DataBase
+    * MySQL
+
+Other Libraries
+    * StreamLit
+
+

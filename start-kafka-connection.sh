@@ -4,7 +4,7 @@ sudo bin/zookeeper-server-start.sh config/zookeeper.properties
 #Start Kafka-Server
 sudo bin/kafka-server-start.sh config/server.properties
 
-#Add Mysql Connect Properties in following path
+#Add Mysql Connect Properties in following path (Custom path is also ok, Add that path in upcoming steps)
 .
 ├── bin
 ├── config
@@ -45,7 +45,7 @@ curl http://localhost:8083/connectors/live_data_1/status
 
 
 #Successfull connection will give the following output
-
+{
 {
   "name": "live_data_1",
   "connector": {
