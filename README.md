@@ -18,8 +18,8 @@
   - StreamLit
 
 ## Project Architecture
+[docs.odg](https://github.com/AshikJenly/CRICKET-DASHBOARD-STREAMING-WITH-KAFKA/files/13490269/docs.odg)
 
-![Project Architecture](docs/docs.odg)
 
 ## How to Execute the Project
 
@@ -98,7 +98,12 @@
     ```
 
 ## Sample Output
+![Screenshot from 2023-11-27 22-31-30](https://github.com/AshikJenly/CRICKET-DASHBOARD-STREAMING-WITH-KAFKA/assets/116492348/302a0dd2-5df8-44fe-8632-15586899a6a5)
 
-![Sample Output 1](<Screenshot from 2023-11-27 22-31-30.png>)
-![Sample Output 2](<Screenshot from 2023-11-27 22-32-28.png>)
-![Sample Output 4](<Screenshot from 2023-11-27 22-45-21.png>)
+![Screenshot from 2023-11-27 22-32-28](https://github.com/AshikJenly/CRICKET-DASHBOARD-STREAMING-WITH-KAFKA/assets/116492348/915a955f-1ee1-40df-8d6e-7b8b5033d98a)
+![Screenshot from 2023-11-27 22-45-01](https://github.com/AshikJenly/CRICKET-DASHBOARD-STREAMING-WITH-KAFKA/assets/116492348/52793e12-6bc4-49bf-8ba9-f1c5b595f041)
+
+![Screenshot from 2023-11-27 22-45-21](https://github.com/AshikJenly/CRICKET-DASHBOARD-STREAMING-WITH-KAFKA/assets/116492348/81cfb0ec-815f-4fb0-adfe-3865840080b9)
+
+
+
